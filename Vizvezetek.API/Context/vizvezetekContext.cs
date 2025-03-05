@@ -6,13 +6,13 @@ using Vizvezetek.API.Models;
 
 namespace Vizvezetek.API.Context;
 
-public partial class vizvezetekContext : DbContext
+public partial class VizvezetekContext : DbContext
 {
-    public vizvezetekContext()
+    public VizvezetekContext()
     {
     }
 
-    public vizvezetekContext(DbContextOptions<vizvezetekContext> options)
+    public VizvezetekContext(DbContextOptions<VizvezetekContext> options)
         : base(options)
     {
     }

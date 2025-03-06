@@ -17,7 +17,7 @@ namespace Vizvezetek.API.DTOs
             this.id = id;
             this.beadas_datum = beadas_datum;
             this.javitas_datum = javitas_datum;
-            this.helyszin = telepules + utca;
+            this.helyszin = telepules + ", " + utca;
             this.szerelo = szerelo;
             this.munkaora = munkaora;
             this.anyagar = anyagar;

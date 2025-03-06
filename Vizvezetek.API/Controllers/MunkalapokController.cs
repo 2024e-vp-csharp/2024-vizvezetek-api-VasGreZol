@@ -14,23 +14,23 @@ namespace Vizvezetek.API.Controllers
     [ApiController]
     public class MunkalapokController : ControllerBase
     {
-        private readonly vizvezetekContext _context;
+        private readonly VizvezetekContext _context;
 
-        public MunkalapokController(vizvezetekContext context)
+        public MunkalapokController(VizvezetekContext context)
         {
             _context = context;
         }
 
         // GET: api/Munkalapok
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<munkalap>>> Getmunkalap()
+        public async Task<ActionResult<IEnumerable<Munkalap>>> Getmunkalap()
         {
             return await _context.munkalap.ToListAsync();
         }
 
         // GET: api/Munkalapok/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<munkalap>> Getmunkalap(int id)
+        public async Task<ActionResult<Munkalap>> Getmunkalap(int id)
         {
             var munkalap = await _context.munkalap.FindAsync(id);
 
@@ -45,7 +45,7 @@ namespace Vizvezetek.API.Controllers
         // PUT: api/Munkalapok/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> Putmunkalap(int id, munkalap munkalap)
+        public async Task<IActionResult> Putmunkalap(int id, Munkalap munkalap)
         {
             if (id != munkalap.id)
             {
@@ -76,7 +76,7 @@ namespace Vizvezetek.API.Controllers
         // POST: api/Munkalapok
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<munkalap>> Postmunkalap(munkalap munkalap)
+        public async Task<ActionResult<Munkalap>> Postmunkalap(Munkalap munkalap)
         {
             _context.munkalap.Add(munkalap);
             await _context.SaveChangesAsync();

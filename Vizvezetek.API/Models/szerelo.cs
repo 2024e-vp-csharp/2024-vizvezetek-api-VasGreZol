@@ -6,7 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Vizvezetek.API.Models;
 
-public partial class szerelo
+[Table("szerelo")]
+public partial class Szerelo
 {
     [Key]
     [Column(TypeName = "int(11)")]
@@ -19,5 +20,5 @@ public partial class szerelo
     public int kezdes_ev { get; set; }
 
     [InverseProperty("szerelo")]
-    public virtual ICollection<munkalap> munkalap { get; set; } = new List<munkalap>();
+    public virtual ICollection<Munkalap> munkalap { get; set; } = new List<Munkalap>();
 }

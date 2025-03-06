@@ -6,7 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Vizvezetek.API.Models;
 
-public partial class hely
+[Table("hely")]
+public partial class Hely
 {
     [Key]
     [Column(TypeName = "int(11)")]
@@ -19,5 +20,5 @@ public partial class hely
     public string utca { get; set; } = null!;
 
     [InverseProperty("hely")]
-    public virtual ICollection<munkalap> munkalap { get; set; } = new List<munkalap>();
+    public virtual ICollection<Munkalap> munkalap { get; set; } = new List<Munkalap>();
 }

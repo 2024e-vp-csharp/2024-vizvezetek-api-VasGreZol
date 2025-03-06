@@ -17,14 +17,13 @@ public partial class VizvezetekContext : DbContext
     {
     }
 
-    public virtual DbSet<hely> hely { get; set; }
+    public virtual DbSet<Hely> hely { get; set; }
 
-    public virtual DbSet<munkalap> munkalap { get; set; }
+    public virtual DbSet<Munkalap> munkalap { get; set; }
 
-    public virtual DbSet<szerelo> szerelo { get; set; }
+    public virtual DbSet<Szerelo> szerelo { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=localhost;user=root;database=vizvezetek", ServerVersion.Parse("10.4.28-mariadb"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,12 +32,12 @@ public partial class VizvezetekContext : DbContext
             .UseCollation("utf8mb4_general_ci")
             .HasCharSet("utf8mb4");
 
-        modelBuilder.Entity<hely>(entity =>
+        modelBuilder.Entity<Hely>(entity =>
         {
             entity.HasKey(e => e.id).HasName("PRIMARY");
         });
 
-        modelBuilder.Entity<munkalap>(entity =>
+        modelBuilder.Entity<Munkalap>(entity =>
         {
             entity.HasKey(e => e.id).HasName("PRIMARY");
 
@@ -51,7 +50,7 @@ public partial class VizvezetekContext : DbContext
                 .HasConstraintName("munkalap_ibfk_2");
         });
 
-        modelBuilder.Entity<szerelo>(entity =>
+        modelBuilder.Entity<Szerelo>(entity =>
         {
             entity.HasKey(e => e.id).HasName("PRIMARY");
 

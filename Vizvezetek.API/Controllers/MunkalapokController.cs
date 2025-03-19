@@ -37,21 +37,29 @@ namespace Vizvezetek.API.Controllers
                 .Include(x => x.hely)
                 .Include(x => x.szerelo)
                 .ToListAsync();
+
+            if (munkalapok == null)
+            {
+                return NotFound();
+            }
             return munkalapok.ToDTO();
         }
 
         // GET: api/Munkalapok/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Munkalap>> Getmunkalap(int id)
+        public async Task<ActionResult<MunkalapDTO>> GetMunkalap(int id)
         {
-            var munkalap = await _context.munkalap.FindAsync(id);
+            var munkalap = await _context.munkalap
+                .Include(x => x.hely)
+                .Include(x => x.szerelo)
+                .FirstOrDefaultAsync(m => m.id == id);
 
             if (munkalap == null)
             {
                 return NotFound();
             }
 
-            return munkalap;
+            return munkalap.ToDTO();
         }
 
         // PUT: api/Munkalapok/5

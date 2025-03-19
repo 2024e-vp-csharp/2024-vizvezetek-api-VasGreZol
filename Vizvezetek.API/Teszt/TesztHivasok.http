@@ -1,4 +1,9 @@
 ﻿@hostname = http://localhost:5000
 
-GET {{hostname}}/api/Munlakapok
+GET {{hostname}}/api/munlakapok
+Accept: application/json
+
+###
+
+GET {{hostname}}/api/munlakapok/5
 Accept: application/json
